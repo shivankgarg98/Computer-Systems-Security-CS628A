@@ -1,0 +1,1 @@
+After carefully examining the function, I figured out that it MD5 hashes the time in second(epoch) with the username(shivankg). Goal was to get the OTP when the database was modified. So get the time in second for the modification time and then HASH it with username online(many online converter are there). This is to be put in the console.

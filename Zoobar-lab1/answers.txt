@@ -1,0 +1,61 @@
+## Place your answers here.
+
+=======================================================
+---------------
+|exploit-2a.py|
+---------------
+This is exploiting bug#2 mentioned in bugs.txt, by overflowing 'buf' in http_request_line. Since http_read_line is vulnerable, 'buf' is overflown into envp and thus 'env'. When 'env' is overflowed, return address of process_client is disturbed. So a segmentation fault is occured.
+
+---------------
+|exploit-2b.py|
+---------------
+This is exploiting bug#3 mentioned in bugs.txt, by overwriting 'handler', which we will use to take over the control flow of the program. Segmentation fault is occured now because it is overwriting the handler stack with payload.
+
+=======================================================
+--------------
+|exploit-3.py|
+--------------
+In exploiting this, we uses bug#2[http.c:274] mentioned in bugs.txt. set the payload to overwrite the shell address to handler. shellcode.S is modified with SYS_unlink system call and address of grades is given. usrlib.quote take care of the syscall #10.
+-> It complicates the matter because 10 is also \n character. We handle it using urlib. One can also do something like choosing 11 and then decreasin one from it(11-1=10). In this we can genereate it without newline char.
+=======================================================
+---------------
+|exploit-4a.py|
+---------------
+this vulnerablity is similiar to what we did in exploit-2a.py, but instead we have to put the payload and other addresses and pass to system libc as arguements. Also, making sure that addresses of envp and env_line are valide, since they are deferenced. This executes a return to libc attack. Also, use urllib to encode it to correct form.
+
+---------------
+|exploit-4b.py|
+---------------
+Here, we are overflowing the pn buffer by concatenating a much larger buffer with it. It is similiar to what we did  in exploit-3b.py, instead arguement string to unlinking grades is passed to system libc. Use \x00 at the end of string to terminate it. and handler is overqritten by system libc function. this exexectes a return to libc attack.
+=======================================================
+------------
+|Exercise-5|
+------------
+vuln#1: DOS ATTACK- if a request is made without '\n' char, server waits for more input. So, in this way it is denial of service, Due to 'read' call in  http_read_line. So in request, don't add '\n' char. Also ,it does not crash the server.
+->It makes the server hang and it stops waiting for input. Attacker can increase load on server in this way and other people can't access the zoobar. Attacker can also make large number of such calls to make it irresponsible.
+->Add a length check and time-check for taking input, to make it non-blocking, also ensure large number of calls in unit time are not made from same address.
+
+vuln#2: Since, the server directory is not isolated or traversal in root directory is allowed, attacker can traverse to root directory and request for /etc/passwd. Vlunerablity is similiar to chroot vuln. Attacker can make request like "GET /../../../confidential_file HTTP/1.0\r\n\r\n"
+ req = "GET /../../../etc/passwd"+" HTTP/1.0\r\n" + \
+          "\r\n"
+-> Attacker have complete access to file system of server, so it can see confidential data on the server.
+-> use jails or other environmnet like  chroot to prevent access  to files outside the directory. Or permission shuld be limited to access the files outside  the directory.
+
+Other vuln may be used from bugs.txt to crash the server.
+
+=======================================================
+------------
+|Exercise-6|
+------------
+
+bug#1: http_read_line function is  changed to check length of buffer. http.h and http.c are changed accordingly.
+
+bug#2: use strncat instead of strcat, http_serve in http.c is changed to use strncat. 
+
+bug#3: use snprintf instead of sprintf. http_serve_file in http.c is changed accordingly
+
+bug#4:  using an improved version of sprintf for storing string into envp. This improved version  will not allow to overflow envp. All functions using sprintf to store into envp were changed to make use sprintf_improved.
+
+bug#5: using an improved version of sprintf for storing string into envp. This improved version  will not allow to overflow envp. All functions using sprintf to store into envp were changed to make use sprintf_improved.
+
+

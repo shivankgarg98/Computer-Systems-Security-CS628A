@@ -1,0 +1,2 @@
+In this binary, I first made an overflow by writing the address of the function 0804867b <get_flag>.
+After overflowing the address, we have to pass the strcmp by writing the "crucio\x00" in our input. A \x00 character( NULL ) is also added to terminate argument for strcmp.

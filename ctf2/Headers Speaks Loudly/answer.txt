@@ -1,0 +1,1 @@
+[Headers Speaks Loudly] Set admin=1 in cookie, modify headers to set referer=android.cse.iitk.ac.in, user-agent=CS628A, and X-UIDH=rand_number. This does the required things asked.

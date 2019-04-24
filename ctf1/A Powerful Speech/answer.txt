@@ -1,0 +1,3 @@
+Given it was a substitution cipher, I employed https://www.guballa.de/substitution-solver to decrypt the speech. After observing it, able to figure out, it is Donald Trump speech on nukes. I had to correct few letters manually using a python script. Flag is mentioned in the scipt " Only I KnOw thE flaG IS ruEOShnlIt". All the letters are made small before submitting on portal.
+
+Also, at the time of submitting, I figured out that there is a bug in platform which can be expolited to reduce the number of attempts of users. I reported this to Professor.

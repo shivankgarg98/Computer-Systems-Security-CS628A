@@ -1,0 +1,1 @@
+In this binary, there is pseudo random canary, This canary has to be guessed correctly. This is done by guess_canary.py ( do what is writeen in rand). After guessing the canary, give input to redirect it to one_two, buckle and then  my_shoe, finally to the get_Flag. This final step ensures that eax register is 3 to pass the `cmp`

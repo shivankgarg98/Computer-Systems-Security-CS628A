@@ -1,0 +1,1 @@
+The explaination of Virtual Tourist Return(_ZN5Flage8get_flagEPKc is to be called) is same as Virtual Tourist. Only thing is to be note here is we have to input the name of file in our payload, since we have the 'cat' command. In payload flag.txt is separated by 'newline character'.

@@ -1,0 +1,1 @@
+This is basic Steganography. first the png image is broken. So, comparing it with other png image, I figured the correct header. Now, After the png image is opening perfectly, used an existing application calledd stegsolver to change the hue and color to make the flag visible.

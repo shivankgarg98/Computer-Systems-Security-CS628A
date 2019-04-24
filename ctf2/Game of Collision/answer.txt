@@ -1,0 +1,2 @@
+[Game of Collision] https://cs628a.cse.iitk.ac.in:9158/2U594jzPD9/index.php?p=apps&f=1&arg1[]=a&arg2[]=b
+we can pass the two different non-empty arrays, and we get the same string to bypass the equality

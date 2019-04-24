@@ -1,0 +1,61 @@
+
+
+[http.c:65]
+When http_read_line(fd,buf) is called, since it is reading input until it  read '\n' without checking size. So, http_read_line is vulnerable. This make buffer 'buf' to overflow for any input of length greater than 4096. buf is stored at envp, which make 'env' overflow and thus return address of 'process_client' is changed to wrong and Server is crashed with below request.
+	<if (http_read_line(fd, buf) < 0)>
+
+req = "GET /"+"abc"*1400+" HTTP/1.0\r\n" + \
+          "\r\n"
+
+Yes, this bug can be prevented using canary.
+
+
+
+[http.c:274]
+strcat(pn,name) in http_serve is vulnerable to overflow 'pn', since 'pn' of max size 1024 and also 'name' is of max size 1024. So, if buffer name of size 1024 is concatenated behind pn of size 1024 without checking length, pn will be overflowed into ''handler'. In this way, we can change the value of 'handler'.
+	
+	<strcat(pn, name);>
+
+	req = "GET /http.c/"+"abcd"*265+" HTTP/1.0\r\n" + \
+        "\r\n"
+
+No,it can't be prevented using canary. Since, it overflow 'handler', and not return address.
+
+
+
+[http.c:304]
+http_serve_file is called in http_serve, is vulnerable due to sprintf. buffer 'buf' will overflow if 'pn'(of size around 1024) and output of getenv("PATH_INFO") is  stored in 'buf'. It is not checking length of 'pn', before storing into 'buf'.		
+	
+	<sprintf(buf, "%s%s", pn, getenv("PATH_INFO"));>
+
+	req = "GET /break.txt"+"a"*1100+" HTTP/1.0\r\n" + \
+          "\r\n"
+
+
+Yes, it can be prevented using canary. 
+
+
+[http.c:87]
+sprintf storing 'buf' value to 'envp' without checking length. This causes 'env' to overflow if buf is around 4096 bytes and env has max of 4096, since envp = env. 'env' buffer is of size 4096, so as 'buf'.Server is crashed with below request.
+	   <envp += sprintf(envp, "REQUEST_METHOD=%s", buf) + 1;>
+
+	    req = "GET /http.c/"+"a"*4096+" HTTP/1.0\r\n" + \
+          "\r\n"
+     
+
+Yes, this bug can be prevented using canary, since it overflow 'env' which modifies return address of 'process_client'
+
+
+
+[zookfs.c:44]
+env_deserialize(defined in http.c) function is called in zookfs.c, 'envp' buffer has max size of 4096, and it also concatenate 2 strings using sprintf. If 'envp' already has a size around 4096, then envp will overflow when env_deserialize is called. Server is crashed with below 'req', as return address of main in zookfs is overwritten.
+		<env_deserialize(envp, len)>
+
+		<envp += sprintf(envp, "GATEWAY_INTERFACE=CGI/1.1") + 1;
+    envp += sprintf(envp, "REDIRECT_STATUS=200") + 1;>
+
+     req = "GET /abcde"+"a"*4025+" HTTP/1.0\r\n" + \
+          "\r\n"
+  
+Yes, this bug can be prevented using canary.
+ 
