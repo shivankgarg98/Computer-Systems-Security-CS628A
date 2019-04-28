@@ -1,0 +1,56 @@
+Module-1
+*	https://web.cse.iitk.ac.in/users/spramod/courses/cs628-2019/hacking-the-art-of-exploitation.pdf
+* https://www.cs.purdue.edu/homes/xyzhang/fall07/Papers/defeat-stackguard.pdf
+
+Module-2
+*	https://en.wikipedia.org/wiki/File_system_permissions
+* https://www.unix.com/tips-and-tutorials/19060-unix-file-permissions.html
+* https://web.cse.iitk.ac.in/users/spramod/courses/cs628-2019/apue.pdf
+*	http://www.citi.umich.edu/u/provos/ssh/privsep.html
+* http://www.citi.umich.edu/techreports/reports/citi-tr-02-3.pdf
+*	https://benpfaff.org/papers/ostia.pdf
+*	https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/34913.pdf
+
+Module-3
+*	https://hillside.net/plop/2004/papers/mhafiz1/PLoP2004_mhafiz1_0.pdf
+*	https://cr.yp.to/qmail/guarantee.html
+
+Module-4
+* https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy
+* https://crypto.stanford.edu/sameorigin/sameorigin.pdf
+* http://crypto.stanford.edu/~dabo/papers/webtiming.pdf
+* https://samy.pl/evercookie/
+* http://cyberlaw.stanford.edu/blog/2011/08/tracking-trackers-microsoft-advertising
+
+Module-5
+*	https://samy.pl/myspace/tech.html
+*	https://www.geekboy.ninja/blog/airbnb-bug-bounty-turning-self-xss-into-good-xss-2/
+*	https://www.chromium.org/developers/design-documents/xss-auditor
+* https://dl.acm.org/citation.cfm?id=1653713
+* https://theory.stanford.edu/~jcm/papers/pci_oakland10.pdf
+* https://seclab.stanford.edu/websec/scannerPaper.pdf
+
+Module-6
+*	https://www.linuxjournal.com/content/understanding-kaminskys-dns-bug
+* https://crypto.stanford.edu/dns/dns-rebinding.pdf
+* https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
+* https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/upgrade-insecure-requests
+* https://avicoder.me/2016/02/22/SSLstrip-for-newbies/
+* https://www.blackhat.com/presentations/bh-dc-09/Marlinspike/BlackHat-DC-09-Marlinspike-Defeating-SSL.pdf
+
+Module-7
+*	http://www.unixwiz.net/techtips/iguide-ipsec.html
+*	https://csrc.nist.gov/publications/detail/sp/800-54/final
+*	http://cs.unc.edu/~fabian/course_papers/sbgp.pdf
+*	https://tools.ietf.org/html/rfc8205
+*	https://www.icann.org/resources/pages/dnssec-what-is-it-why-important-2019-03-05-en
+*	https://www.cloudflare.com/dns/dnssec/how-dnssec-works/
+*	https://www.ietf.org/rfc/rfc4033.txt
+
+Module-8
+*	https://en.wikipedia.org/wiki/2007_cyberattacks_on_Estonia
+*	https://blog.cloudflare.com/the-ddos-that-knocked-spamhaus-offline-and-ho/ https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet/
+*	https://blog.cloudflare.com/the-new-ddos-landscape/
+*	https://arstechnica.com/information-technology/2015/04/ddos-attacks-that-crippled-github-linked-to-great-firewall-of-china/
+*	http://my.fit.edu/~gmarin/CSE5636/Backscatter.pdf
+

@@ -1,0 +1,9 @@
+#! /bin/bash
+homedir=/home/badguy
+# Initialise the jail
+mkdir $homedir
+chmod 0755 $homedir
+jk_init -j $homedir jk_lsh
+jk_init -j $homedir scp
+# Create the account
+jk_jailuser -j $homedir test
